@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Passaporte</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            text-align: center;
+        }
+        input.inputtxt {
+            text-align: left;
+            width: 200px;
+            margin-bottom: 10px;
+        }
+        div#res {
+            font-size: 25px;
+            margin: 15px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Passagem para a Fronteira Brasileira</h1>
+    <h2>Preencha com seus dados pessoais: </h2>
+    <br>
+    Nome: <input type="text" name="nome" id="nome" class="inputtxt"> <br>
+    Idade: <input type="number" name="idade" id="idade" class="inputtxt"> <br>
+    País: <input type="text" name="pais" id="país" class="inputtxt"> <br>
+    <input type="button" value="Verificar" onclick="verif()">
+    <input type="button" value="Limpar" onclick="reset()">
+    <div id="res">
+        Resultado
+    </div>
+    <script>
+        function verif() {
+            nome = document.getElementById('nome').value
+            idadetxt = (document.getElementById('idade').value)
+            idade = Number(idadetxt)
+            país = document.getElementById('país'.toLowerCase()).value
+            res = document.querySelector('div#res')
+            resfin = ''
+
+            res.innerHTML = `<p>Bem-vindo, <strong>${nome}</strong>!</p>`
+            if (idade >= 18 && país == 'brasil') {
+                res.innerHTML += `<p style="color: green"><strong>Sua passagem foi LIBERADA!</strong></p>`
+            }
+            else {
+                res.innerHTML += `<p style="color: red"><strong>Sua passagem foi BLOQUEADA!</strong></p>`
+            }
+        }
+        function reset() {
+            var reset1 = document.getElementById('nome')
+            var reset2 = document.getElementById('idade')
+            var reset3 = document.getElementById('país'.toLowerCase())
+            var reset4 = document.getElementById('res')
+            reset1.value = ''
+            reset2.value = ''
+            reset3.value = ''
+            reset4.innerText = 'Resultado'
+        }
+    </script>
+</body>
+</html>
